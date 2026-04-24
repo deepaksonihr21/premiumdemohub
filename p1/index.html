@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Soni | Premium Elite Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #bc13fe; 
+            --bg: #000000;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            background: radial-gradient(circle at top right, #110022, #000);
+        }
+
+        /* --- Custom Cursor Glow --- */
+        .cursor-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(188, 19, 254, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: 0.1s ease-out;
+        }
+
+        /* --- Hero: Authority First --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .premium-tag {
+            font-size: 0.75rem;
+            letter-spacing: 10px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 800;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(2.5rem, 12vw, 7.5rem);
+            line-height: 0.85;
+            letter-spacing: -6px;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        @keyframes reveal {
+            from { transform: translateY(80px); opacity: 0; filter: blur(15px); }
+            to { transform: translateY(0); opacity: 1; filter: blur(0); }
+        }
+
+        /* --- Sections Logic --- */
+        .section {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reveal-box {
+            max-width: 900px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal-box.visible { opacity: 1; transform: translateY(0); }
+
+        .big-text {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 35px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        /* --- Feature Proof List --- */
+        .feature-list {
+            text-align: left;
+            display: inline-block;
+            margin: 40px auto;
+            list-style: none;
+        }
+
+        .feature-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-list li::before {
+            content: '👑';
+            font-size: 0.9rem;
+        }
+
+        /* --- Video Showcase --- */
+        .video-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 16/9;
+            background: #111;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+            margin: 40px 0;
+        }
+
+        video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Powerful CTA --- */
+        .premium-cta {
+            padding: 25px 60px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .premium-cta:hover {
+            transform: scale(1.08);
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 50px rgba(188, 19, 254, 0.5);
+        }
+
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 6px;
+            color: #333;
+            text-transform: uppercase;
+            border-top: 1px solid #111;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="cursor-glow" id="glow"></div>
+
+    <section class="hero">
+        <span class="premium-tag">High-Ticket Architecture</span>
+        <h1>ELITE<br>LEGACY</h1>
+        <p style="margin-top: 30px; color: #555; letter-spacing: 4px; font-weight: 700;">ARCHITECTED BY DEEPAKSONIHR21</p>
+    </section>
+
+    <section class="section">
+        <div class="reveal-box">
+            <h2 class="big-text">We don't build websites.<br>We build Empires.</h2>
+            <div class="video-wrapper">
+                <video autoplay muted loop playsinline>
+                    <source src="v1.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="reveal-box">
+            <h2 class="big-text">Built to Convert,<br>Not Just Look Good.</h2>
+            <p style="color:#888; font-size:1.1rem; max-width:600px; margin:auto; line-height:1.6;">
+                Every pixel is strategically engineered to turn casual visitors into high-paying clients and followers into revenue.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="reveal-box">
+            <h2 class="big-text">What You Get</h2>
+            <ul class="feature-list">
+                <li><strong>Full Custom Build:</strong> Hand-coded (No Templates)</li>
+                <li><strong>Advanced UX/UI:</strong> Next-gen animations & flow</li>
+                <li><strong>Full SEO Engine:</strong> Built to rank on Google</li>
+                <li><strong>Business Intelligence:</strong> Conversion-focused layout</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="reveal-box">
+            <h2 class="big-text">Ready to Dominate?</h2>
+            <p style="color: #666; margin-bottom: 40px; font-weight: 500;">Limited capacity: I only accept 2 premium builds per month to ensure perfection.</p>
+            <a href="https://www.instagram.com/deepaksonihr21" class="premium-cta">Build Your Elite Brand 🚀</a>
+        </div>
+    </section>
+
+    <footer>
+        MMXXVI • THE PREMIUM STANDARD • DEEPAKSONIHR21
+    </footer>
+
+    <script>
+        const glow = document.getElementById('glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        const boxes = document.querySelectorAll('.reveal-box');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.25 });
+
+        boxes.forEach(box => observer.observe(box));
+    </script>
+
+</body>
+</html>
