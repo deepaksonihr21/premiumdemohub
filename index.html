@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak WebCrafts | The Demo Hub</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --accent: #bc13fe; --bg: #050505; --card: #0f0f0f; --text: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: var(--bg); color: var(--text); 
+            font-family: 'Outfit', sans-serif; line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+
+        /* --- 1. HERO (HOOK) --- */
+        .hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { 
+            font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2rem, 8vw, 4.5rem); 
+            line-height: 1; margin-bottom: 25px; opacity: 0; filter: blur(10px);
+        }
+        .hero p { font-size: 1.2rem; color: #888; max-width: 600px; opacity: 0; }
+
+        /* --- 2. DEMO GRID --- */
+        .demo-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; margin: 50px 0; 
+        }
+        .demo-card { 
+            background: var(--card); border: 1px solid #1a1a1a; padding: 40px; 
+            border-radius: 24px; transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex; flex-direction: column; justify-content: space-between;
+            opacity: 0; transform: translateY(40px);
+        }
+        .demo-card:hover { 
+            border-color: var(--accent); transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(188, 19, 254, 0.1);
+        }
+        .demo-card span { color: var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; }
+        .demo-card h2 { font-family: 'Bricolage Grotesque', sans-serif; margin: 15px 0; font-size: 1.8rem; }
+        .demo-card p { color: #666; font-size: 0.95rem; margin-bottom: 30px; }
+        .explore-btn { 
+            text-decoration: none; color: #fff; font-weight: 600; font-size: 0.9rem; 
+            display: flex; align-items: center; gap: 10px;
+        }
+        .explore-btn::after { content: '→'; transition: 0.3s; }
+        .explore-btn:hover::after { transform: translateX(5px); }
+
+        /* --- 3. POSITIONING --- */
+        .power-line { text-align: center; padding: 100px 0; }
+        .power-line h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(1.5rem, 5vw, 3rem); line-height: 1.2; }
+
+        .position-box { background: #0a0a0a; padding: 60px 40px; border-radius: 30px; border: 1px solid #111; text-align: center; margin-bottom: 100px; }
+        .position-box p { color: #888; font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        /* --- 4. FINAL CTA --- */
+        .final-cta { text-align: center; padding-bottom: 150px; }
+        .cta-main { 
+            display: inline-block; padding: 22px 60px; background: var(--accent); color: #fff; 
+            text-decoration: none; border-radius: 12px; font-weight: 800; text-transform: uppercase; 
+            letter-spacing: 1px; transition: 0.3s;
+        }
+        .cta-main:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(188, 19, 254, 0.4); }
+
+        .social-minimal { margin-top: 50px; display: flex; justify-content: center; gap: 30px; }
+        .social-minimal a { color: #444; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+        .social-minimal a:hover { color: var(--accent); }
+
+        footer { padding: 40px; text-align: center; font-size: 0.6rem; color: #222; letter-spacing: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1. ENTRY HOOK -->
+        <section class="hero">
+            <h1 id="hero-title">This is not a portfolio.<br><span style="color:var(--accent)">This is a system.</span></h1>
+            <p id="hero-p">Each demo represents a different level of strategy. From attention → to trust → to conversion.</p>
+        </section>
+
+        <!-- 2. DEMO GRID -->
+        <div class="demo-grid">
+            <!-- DEMO 1 -->
+            <div class="demo-card">
+                <div>
+                    <span>Demo 01</span>
+                    <h2>First Impact</h2>
+                    <p>Designed to grab attention and make your brand feel premium in seconds.</p>
+                </div>
+                <a href="https://premium.deepakstudio.xyz/p1/" class="explore-btn">Explore</a>
+            </div>
+
+            <!-- DEMO 2 -->
+            <div class="demo-card">
+                <div>
+                    <span>Demo 02</span>
+                    <h2>User Experience</h2>
+                    <p>Smooth interactions that keep visitors engaged and exploring your story.</p>
+                </div>
+                <a href="https://premium.deepakstudio.xyz/p2/" class="explore-btn">Explore</a>
+            </div>
+
+            <!-- DEMO 3 -->
+            <div class="demo-card">
+                <div>
+                    <span>Demo 03</span>
+                    <h2>Client Conversion</h2>
+                    <p>Structured to turn visitors into serious inquiries using logical flow.</p>
+                </div>
+                <a href="https://premium.deepakstudio.xyz/p3/" class="explore-btn">Explore</a>
+            </div>
+
+            <!-- DEMO 4 -->
+            <div class="demo-card">
+                <div>
+                    <span>Demo 04</span>
+                    <h2>Decision Stage</h2>
+                    <p>Removes doubts and helps clients confidently say YES to your brand.</p>
+                </div>
+                <a href="https://premium.deepakstudio.xyz/p4/" class="explore-btn">Explore</a>
+            </div>
+        </div>
+
+        <!-- 3. POWER LINE -->
+        <section class="power-line">
+            <h2 class="reveal">A good website looks nice.<br><span style="color:var(--accent)">A great website brings clients.</span></h2>
+        </section>
+
+        <!-- 4. POSITIONING -->
+        <div class="position-box reveal">
+            <p>I don’t just design pages. I build systems that guide your visitor from first click to final decision.</p>
+        </div>
+
+        <!-- 5. FINAL CTA -->
+        <section class="final-cta">
+            <div class="reveal">
+                <p style="margin-bottom: 30px; font-size: 1.1rem; color: #888;">If you're serious about building a brand<br>that actually converts, this is your next step.</p>
+                <a href="https://maintenance.deepakstudio.xyz" class="cta-main" id="pulse-btn">View Pricing & Get Started</a>
+            </div>
+
+            <div class="social-minimal">
+                <a href="https://instagram.com/deepaksonihr21">INSTAGRAM</a>
+                <a href="mailto:deepakwebcrafts@gmail.com">GMAIL</a>
+            </div>
+        </section>
+
+        <footer>DEEPAKWEBCRAFTS • MMXXVI</footer>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Intro
+        gsap.to("#hero-title", { opacity: 1, filter: "blur(0px)", duration: 1.5, ease: "power4.out" });
+        gsap.to("#hero-p", { opacity: 1, duration: 1, delay: 0.5 });
+
+        // Demo Grid Cards Reveal
+        gsap.to(".demo-card", {
+            scrollTrigger: { trigger: ".demo-grid", start: "top 80%" },
+            opacity: 1, y: 0, stagger: 0.15, duration: 1, ease: "power3.out"
+        });
+
+        // Power Lines & Sections
+        gsap.utils.toArray(".reveal").forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: { trigger: el, start: "top 90%" },
+                opacity: 1, y: 0, duration: 1, ease: "power2.out"
+            });
+        });
+
+        // Pulse CTA
+        gsap.to("#pulse-btn", { scale: 1.03, repeat: -1, yoyo: true, duration: 1, ease: "sine.inOut" });
+    </script>
+</body>
+</html>

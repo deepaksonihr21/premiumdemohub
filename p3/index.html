@@ -3,274 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepak Soni | Premium Elite Hub</title>
+    <title>Deepak WebCrafts | Client Journey</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --accent: #bc13fe; 
-            --bg: #000000;
-            --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.03);
-        }
-
+        :root { --accent: #bc13fe; --bg: #000; --text: #fff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+        /* --- 1. HOOK (ENTRY IMPACT) --- */
+        .hook-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .hook-text { font-family: 'Syncopate'; font-size: clamp(1rem, 4vw, 1.5rem); margin-bottom: 20px; opacity: 0; letter-spacing: 2px; }
+        .hook-diff { font-family: 'Syncopate'; font-size: clamp(1.5rem, 6vw, 3.5rem); color: var(--accent); opacity: 0; }
+
+        /* --- 2. PROBLEM & REALITY SLAP --- */
+        .scroll-section { min-height: 100vh; padding: 150px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .stagger-text { font-size: clamp(1.2rem, 3vw, 2.2rem); font-weight: 300; margin-bottom: 30px; color: #888; }
+        .bold-impact { font-family: 'Syncopate'; font-size: clamp(2rem, 8vw, 5rem); line-height: 1; margin: 60px 0; }
+
+        /* --- 3. SHOWCASE CARDS (HORIZONTAL) --- */
+        .horizontal-container { overflow: hidden; background: #050505; padding: 100px 0; }
+        .card-wrapper { display: flex; gap: 40px; padding: 0 100px; width: fit-content; }
+        .showcase-card { 
+            width: 350px; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 50px; border-radius: 20px;
+            transition: 0.3s; flex-shrink: 0;
+        }
+        .showcase-card h3 { font-family: 'Syncopate'; color: var(--accent); margin-bottom: 20px; font-size: 1rem; }
+        .showcase-card p { color: #888; line-height: 1.6; }
+
+        /* --- 4. CTA & SOCIAL --- */
+        .final-cta { padding: 150px 20px; text-align: center; background: radial-gradient(circle at bottom, #1a0033 0%, #000 100%); }
+        .glow-btn { 
+            display: inline-block; padding: 25px 60px; background: var(--accent); color: #fff; text-decoration: none;
+            border-radius: 5px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;
+            position: relative; box-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
+        }
         
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-            background: radial-gradient(circle at top right, #110022, #000);
-        }
+        .social-minimal { display: flex; justify-content: center; gap: 40px; margin-top: 60px; }
+        .social-minimal a { color: #444; text-decoration: none; font-size: 0.8rem; font-family: 'Syncopate'; transition: 0.3s; }
+        .social-minimal a:hover { color: var(--accent); }
 
-        /* --- Custom Cursor Glow --- */
-        .cursor-glow {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(188, 19, 254, 0.12) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-            transition: 0.1s ease-out;
-        }
+        footer { padding: 50px; text-align: center; color: #111; font-family: 'Syncopate'; font-size: 0.6rem; letter-spacing: 5px; }
 
-        /* --- Hero --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .premium-tag {
-            font-size: 0.75rem;
-            letter-spacing: 10px;
-            color: var(--accent);
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            font-weight: 800;
-            opacity: 0.8;
-        }
-
-        .hero h1 {
-            font-family: 'Syncopate', sans-serif;
-            font-size: clamp(2.5rem, 12vw, 7.5rem);
-            line-height: 0.85;
-            letter-spacing: -6px;
-            text-transform: uppercase;
-            background: linear-gradient(to bottom, #fff, #666);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        @keyframes reveal {
-            from { transform: translateY(80px); opacity: 0; filter: blur(15px); }
-            to { transform: translateY(0); opacity: 1; filter: blur(0); }
-        }
-
-        /* --- Sections Logic --- */
-        .section {
-            min-height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .reveal-box {
-            max-width: 900px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-
-        .reveal-box.visible { opacity: 1; transform: translateY(0); }
-
-        .big-text {
-            font-size: clamp(2.2rem, 6vw, 4.5rem);
-            font-weight: 800;
-            margin-bottom: 35px;
-            line-height: 1.1;
-            letter-spacing: -2px;
-        }
-
-        .feature-list {
-            text-align: left;
-            display: inline-block;
-            margin: 40px auto;
-            list-style: none;
-        }
-
-        .feature-list li {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #ccc;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .feature-list li::before { content: '👑'; font-size: 0.9rem; }
-
-        .video-wrapper {
-            width: 100%;
-            max-width: 1000px;
-            aspect-ratio: 16/9;
-            background: #111;
-            border-radius: 40px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-            margin: 40px 0;
-        }
-
-        video { width: 100%; height: 100%; object-fit: cover; }
-
-        .premium-cta {
-            padding: 25px 60px;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 100px;
-            font-weight: 900;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .premium-cta:hover {
-            transform: scale(1.08);
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 0 50px rgba(188, 19, 254, 0.5);
-        }
-
-        footer {
-            padding: 80px 20px;
-            text-align: center;
-            font-size: 0.7rem;
-            letter-spacing: 6px;
-            color: #333;
-            text-transform: uppercase;
-            border-top: 1px solid #111;
-        }
-
+        /* Helper Classes */
+        .reveal { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
 <body>
 
-    <div class="cursor-glow" id="glow"></div>
-
-    <section class="hero">
-        <span class="premium-tag">High-Ticket Architecture</span>
-        <h1>ELITE<br>LEGACY</h1>
-        <p style="margin-top:20px; color:#888; font-size:1rem; max-width:600px; letter-spacing:1px; line-height:1.6;">
-            For creators & businesses who want authority, not just a website.
-        </p>
-        <p style="color:#444; font-size:0.9rem; margin-top:20px; letter-spacing: 2px; font-weight: 700;">
-            ARCHITECTED BY DEEPAKSONIHR21
-        </p>
+    <!-- 1. HOOK SECTION -->
+    <section class="hook-section">
+        <p class="hook-text" id="h1">Most websites look good.</p>
+        <p class="hook-text" id="h2">Very few bring clients.</p>
+        <h2 class="hook-diff" id="h3">This is the difference.</h2>
     </section>
 
-    <section class="section">
-        <div class="reveal-box">
-            <h2 class="big-text">We don't build websites.<br>We build Empires.</h2>
-            <div class="video-wrapper">
-                <video autoplay muted loop playsinline>
-                    <source src="v1.mp4" type="video/mp4">
-                </video>
+    <!-- 2. PROBLEM HIT -->
+    <section class="scroll-section">
+        <p class="reveal stagger-text">You post content.</p>
+        <p class="reveal stagger-text">You get views.</p>
+        <p class="reveal stagger-text">But no serious inquiries.</p>
+        <p class="reveal" style="color: var(--accent); font-weight: 800; margin-top: 20px;">Because your website doesn’t build trust.</p>
+        
+        <h2 class="bold-impact" id="zoom-text">People judge your business in 3 seconds.</h2>
+        
+        <p class="reveal" style="font-size: 1.5rem;">If it looks average,<br>you get treated average.</p>
+    </section>
+
+    <!-- 3. SOLUTION INTRO -->
+    <section class="scroll-section" style="background: #050505;">
+        <h2 class="reveal" style="font-family: 'Syncopate'; margin-bottom: 20px;">I build websites that <br>position you as authority.</h2>
+        <p class="reveal">Not just design. A system that turns attention into clients.</p>
+    </section>
+
+    <!-- 4. MINI SHOWCASE (HORIZONTAL) -->
+    <div class="horizontal-container">
+        <div class="card-wrapper">
+            <div class="showcase-card">
+                <h3>First Impression</h3>
+                <p>Designed to command respect the second a visitor lands. No distractions.</p>
             </div>
-            <p style="color:#555; font-size:0.9rem; margin-top:10px;">
-                Premium builds starting from ₹2999
-            </p>
+            <div class="showcase-card">
+                <h3>Trust Build</h3>
+                <p>Clean structure and clarity that turns skeptics into believers.</p>
+            </div>
+            <div class="showcase-card">
+                <h3>Conversion</h3>
+                <p>Engineered to guide every visitor toward one single action: Inquiring.</p>
+            </div>
+            <div class="showcase-card" style="border: 1px dashed #333;">
+                <h3>Your Result</h3>
+                <p>A 24/7 sales machine that scales with your growth.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. PROOF & EDGE -->
+    <section class="scroll-section">
+        <p class="reveal" style="font-family: 'Syncopate'; letter-spacing: 5px; color: var(--accent);">Built for creators & growing brands</p>
+        <h2 class="reveal" style="margin: 40px 0;">Focused on real results, not just visuals</h2>
+        
+        <div style="margin-top: 50px; text-align: left; max-width: 500px; border-left: 2px solid var(--accent); padding-left: 30px;">
+            <p class="reveal" style="margin-bottom: 10px;">No tech background.</p>
+            <p class="reveal" style="margin-bottom: 10px;">No shortcuts.</p>
+            <p class="reveal" style="font-weight: 800;">Just skill, consistency, and execution.</p>
         </div>
     </section>
 
-    <section class="section">
-        <div class="reveal-box">
-            <h2 class="big-text">Built to Convert,<br>Not Just Look Good.</h2>
-            <p style="color:#888; font-size:1.1rem; max-width:600px; margin:auto; line-height:1.6;">
-                Every pixel is strategically engineered to turn casual visitors into high-paying clients and followers into revenue.
-            </p>
-            <p style="color:#666; margin-top:20px; font-size:0.9rem;">
-                Used by creators & brands to increase engagement & conversions.
-            </p>
+    <!-- 6. FINAL CLOSE -->
+    <section class="final-cta">
+        <h2 class="reveal" style="font-family: 'Syncopate'; margin-bottom: 40px;">If your website isn’t converting,<br>it’s costing you clients.</h2>
+        
+        <a href="https://maintenance.deepakstudio.xyz" class="glow-btn" id="pulse-btn">View Pricing & Get Started</a>
+
+        <div class="social-minimal">
+            <a href="https://instagram.com/deepaksonihr21">INSTAGRAM</a>
+            <a href="mailto:deepakwebcrafts@gmail.com">GMAIL</a>
         </div>
     </section>
 
-    <section class="section">
-        <div class="reveal-box">
-            <h2 class="big-text">What You Get</h2>
-            <ul class="feature-list">
-                <li><strong>Full Custom Build:</strong> Hand-coded (No Templates)</li>
-                <li><strong>Advanced UX/UI:</strong> Next-gen animations & flow</li>
-                <li><strong>Full SEO Engine:</strong> Built to rank on Google</li>
-                <li><strong>Business Intelligence:</strong> Conversion-focused layout</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="reveal-box">
-          <h2 class="big-text">How It Works</h2>
-          <p style="color:#888; max-width:600px; margin:auto; line-height:2.2; font-size: 1.1rem; text-align: left; display: inline-block;">
-            1. <strong>Vision:</strong> You share your brand goals.<br>
-            2. <strong>Strategy:</strong> I design your high-converting brand system.<br>
-            3. <strong>Launch:</strong> We deploy your digital authority hub.
-          </p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="reveal-box">
-            <h2 class="big-text">Ready to Dominate?</h2>
-            <p style="color:#777; font-size:0.9rem; margin-bottom: 30px;">
-                Only 2 premium slots available this month — next intake opens later.
-            </p>
-            <a href="https://www.instagram.com/deepaksonihr21" class="premium-cta">Apply For Premium Website →</a>
-        </div>
-    </section>
-
-    <p style="text-align:center; color:#444; font-size:0.8rem; margin-bottom: 40px; letter-spacing: 1px;">
-        No templates. Every project is built uniquely.
-    </p>
-
-    <footer>
-        MMXXVI • THE PREMIUM STANDARD • DEEPAKSONIHR21
-    </footer>
+    <footer>DEEPAKWEBCRAFTS • MMXXVI</footer>
 
     <script>
-        const glow = document.getElementById('glow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Hook Animation
+        const tl = gsap.timeline();
+        tl.to("#h1", { opacity: 1, duration: 1, delay: 0.5 })
+          .to("#h2", { opacity: 1, duration: 1 })
+          .to("#h3", { opacity: 1, scale: 1.1, duration: 1.2, ease: "back.out" });
+
+        // 2. Scroll Reveal
+        gsap.utils.toArray(".reveal").forEach(text => {
+            gsap.to(text, {
+                scrollTrigger: { trigger: text, start: "top 85%" },
+                opacity: 1, y: 0, duration: 1
+            });
         });
 
-        const boxes = document.querySelectorAll('.reveal-box');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.25 });
+        // 3. Zoom Impact Text
+        gsap.from("#zoom-text", {
+            scrollTrigger: { trigger: "#zoom-text", start: "top 80%", end: "top 20%", scrub: true },
+            scale: 0.8, opacity: 0.2
+        });
 
-        boxes.forEach(box => observer.observe(box));
+        // 4. Horizontal Scroll Cards
+        gsap.to(".card-wrapper", {
+            scrollTrigger: {
+                trigger: ".horizontal-container",
+                start: "top top",
+                end: () => "+=" + document.querySelector(".card-wrapper").offsetWidth,
+                scrub: 1,
+                pin: true,
+            },
+            x: "-50%",
+            ease: "none"
+        });
+
+        // 5. Button Pulse
+        gsap.to("#pulse-btn", { scale: 1.05, repeat: -1, yoyo: true, duration: 0.8, ease: "sine.inOut" });
     </script>
-
 </body>
 </html>
